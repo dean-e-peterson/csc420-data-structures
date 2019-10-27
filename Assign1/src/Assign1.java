@@ -1,7 +1,7 @@
-/**
+/*
  * Assign1.java
  * Concordia CSC420 - Data Structures
- * Assignment 1 - Random Name Generator
+ * Assignment 1 - Random Name Generator - Main program
  * Proof of concept to generate fake names for test environments.
  * By Dean Peterson <petersod8@csp.edu>
  * Instructor James Tucker
@@ -11,6 +11,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -58,11 +59,13 @@ public class Assign1 {
         
         // Sort list of persons by first name and display them.
         System.out.println("Sorted by First Name:");
-        System.out.println();
+        persons.sort(new PersonFirstNameComparator());
+        printCollection(persons);
         
         // Sort list of persons by last name and display them.
         System.out.println("Sorted by Last Name:");
-        System.out.println();
+        persons.sort(null);
+        printCollection(persons);
         
         // Display names categorized by first name.
         System.out.println("Combine all names by First Name:");
@@ -72,6 +75,13 @@ public class Assign1 {
     // Print heading identifying author for ease of grading.
     private static void printHeading() {
         System.out.println("Submitted by: Dean Peterson - petersod8@csp.edu\n");
+    }
+    
+    private static void printCollection(Collection collection) {
+        for (Object o: collection) {
+            System.out.println("\t" + o);
+        }
+        System.out.println();
     }
     
     // Load a list of first or last names from a text file listing one per line.
