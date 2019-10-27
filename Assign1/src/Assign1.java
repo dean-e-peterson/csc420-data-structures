@@ -12,7 +12,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -57,7 +59,8 @@ public class Assign1 {
         
         // Display names categorized by first name.
         System.out.println("Combine all names by First Name:");
-        System.out.println();
+        Map<String, List<Person>> personsByFirstName = groupPersonsByFirstName(persons);
+        printPersonsByFirstName(personsByFirstName);
     }
     
     // Print heading identifying author for ease of grading.
@@ -87,9 +90,7 @@ public class Assign1 {
     }
     
     // Generates random persons from lists of first & last names, & prints them.
-    private static List<Person> generatePersons(List<String> firstNames,
-                                                List<String> lastNames)
-    {
+    private static List<Person> generatePersons(List<String> firstNames, List<String> lastNames) {
         List<Person> results = new ArrayList<>(SIZE);
         Random random = new Random();
         for (int i = 1; i <= SIZE; i++) {
@@ -105,6 +106,34 @@ public class Assign1 {
         }
         System.out.println();
         return results;
+    }
+    
+    // Group a list of persons by first name into a map of Person lists.
+    private static Map<String, List<Person>> groupPersonsByFirstName(Collection<Person> persons) {
+        // Put persons with same first name into same map bucket.
+        Map<String, List<Person>> results = new HashMap<>();
+        for (Person person: persons) {
+            String firstName = person.getFirstName();
+            if (!results.containsKey(firstName)) {
+                // No bucket yet, add an empty list with first name as key.
+                results.put(firstName, new ArrayList<Person>());
+            }
+
+            // Add person to this key's list.
+            results.get(firstName).add(person);
+        }
+        return results;
+    }
+    
+    // Display a map of persons grouped by first name.
+    private static void printPersonsByFirstName(Map<String, List<Person>> personsByFirstName) {
+        for (String firstName: personsByFirstName.keySet()) {
+            System.out.println("\t" + firstName);
+            for (Person person: personsByFirstName.get(firstName)) {
+                System.out.println("\t\t" + person.getLastName());
+            }
+        }
+        System.out.println();
     }
 }
 
