@@ -34,28 +34,16 @@ public class Assign1 {
         List<String> firstNames = loadNameList(FIRST_NAME_FILE);
         List<String> lastNames = loadNameList(LAST_NAME_FILE);
         
-        // Debug only, comment out or remove ###
-        System.out.println(firstNames);
-        System.out.println(lastNames);
-        System.out.println();
+        // Debug only, comment out or remove
+        //System.out.println(firstNames);
+        //System.out.println(lastNames);
+        //System.out.println();
         
         // Generate person names as random combinations of first and last name,
         // displaying them as they are generated.
+        // Note: List data structure allows duplicate names like real life.
         System.out.println("Generated Names:");
-        List<Person> persons = new ArrayList<>(SIZE);
-        Random random = new Random();
-        for (int i = 0; i < SIZE; i++) {
-            // Get random ints between 0 and one less than the name list size.
-            int firstNameIndex = random.nextInt(firstNames.size());
-            int lastNameIndex = random.nextInt(lastNames.size());
-            // Note: Collections.shuffle() is not used because we want
-            // possible duplicates, which a permutation would not give us.
-            Person person = new Person(firstNames.get(firstNameIndex), 
-                                       lastNames.get(lastNameIndex));
-            persons.add(person);
-            System.out.println("\t" + i + ". " + person);
-        }
-        System.out.println();
+        List<Person> persons = generatePersons(firstNames, lastNames);
         
         // Sort list of persons by first name and display them.
         System.out.println("Sorted by First Name:");
@@ -77,6 +65,7 @@ public class Assign1 {
         System.out.println("Submitted by: Dean Peterson - petersod8@csp.edu\n");
     }
     
+    // Print elements of a collection each on their own line, preceded by tabs.
     private static void printCollection(Collection collection) {
         for (Object o: collection) {
             System.out.println("\t" + o);
@@ -95,6 +84,27 @@ public class Assign1 {
             System.err.println(e);
         }
         return result;
+    }
+    
+    // Generates random persons from lists of first & last names, & prints them.
+    private static List<Person> generatePersons(List<String> firstNames,
+                                                List<String> lastNames)
+    {
+        List<Person> results = new ArrayList<>(SIZE);
+        Random random = new Random();
+        for (int i = 1; i <= SIZE; i++) {
+            // Get random ints between 0 and the name list size minus 1.
+            int firstNameIndex = random.nextInt(firstNames.size());
+            int lastNameIndex = random.nextInt(lastNames.size());
+            // Note: Collections.shuffle() is not used because we want
+            // possible duplicates, which a permutation would not give us.
+            Person person = new Person(firstNames.get(firstNameIndex), 
+                                       lastNames.get(lastNameIndex));
+            results.add(person);
+            System.out.println("\t" + i + ". " + person);
+        }
+        System.out.println();
+        return results;
     }
 }
 
