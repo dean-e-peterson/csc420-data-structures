@@ -22,6 +22,9 @@ class Band {
     
     public static Band deserialize(String bandString) {
         int delimiterPos = bandString.indexOf(DELIMITER);
+        if (delimiterPos == -1) {
+            throw new IllegalArgumentException("Band deserialize input has no pipe symbol: " + bandString);
+        }
         String bandName = bandString.substring(0, delimiterPos);
         String setTime = bandString.substring(delimiterPos + 1, bandString.length());
         return new Band(bandName, Float.valueOf(setTime));
