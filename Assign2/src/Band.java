@@ -8,7 +8,7 @@
  * October 29, 2019
  */
 
-class Band {
+class Band implements Comparable<Band> {
     
     private static final char DELIMITER = '|';
     
@@ -41,6 +41,11 @@ class Band {
     }
     public void setSetTime(float setTime) {
         this.setTime = setTime;
+    }
+    
+    @Override
+    public int compareTo(Band b) {
+        return this.bandName.compareToIgnoreCase(b.bandName);
     }
     
     @Override

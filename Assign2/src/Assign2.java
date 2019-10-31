@@ -31,7 +31,7 @@ public class Assign2 {
                         break;
                 case 2: searchSetTime();
                         break;
-                default:System.out.println("Goodbye!");
+                default:System.out.println("\nGoodbye!");
                         return;
             }
         }
