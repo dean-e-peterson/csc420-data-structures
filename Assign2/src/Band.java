@@ -44,6 +44,9 @@ class Band implements Comparable<Band> {
     }
     
     @Override
+    //public int compareTo(Object o) {
+    //    return this.bandName.compareToIgnoreCase(((Band)o).bandName);
+    //}
     public int compareTo(Band b) {
         return this.bandName.compareToIgnoreCase(b.bandName);
     }

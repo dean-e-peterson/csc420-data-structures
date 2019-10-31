@@ -36,6 +36,10 @@ class BandList {
         }
     }
     
+    public void sortByName() {
+        MergeSort.sort(innerList);
+    }
+    
     // For debugging use.
     @Override
     public String toString() {

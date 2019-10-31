@@ -22,6 +22,14 @@ public class Assign2 {
     public static void main(String[] args) {
         System.out.println("Submitted by: Dean Peterson - petersod8@csp.edu");
         bands = new BandList(BANDFILE);
+        
+        // Debug
+        System.out.println();        
+        System.out.println(bands);
+        bands.sortByName();
+        System.out.println();
+        System.out.println(bands);
+        
         while (true) {
             System.out.println("\nSearch by Band Name (1) or Set List (2): ");
             int menuChoice = in.nextInt();
