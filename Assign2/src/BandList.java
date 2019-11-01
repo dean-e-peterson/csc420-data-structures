@@ -40,6 +40,10 @@ class BandList {
         MergeSort.sort(innerList);
     }
     
+    public Band searchByName(String name) {
+        return BinarySearch.search(innerList, name);
+    }
+    
     // For debugging use.
     @Override
     public String toString() {

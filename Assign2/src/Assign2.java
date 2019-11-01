@@ -48,6 +48,8 @@ public class Assign2 {
     private static void searchBandName() {
         System.out.println("Enter Band Name you are looking for:");
         String name = in.nextLine();
+        bands.sortByName();
+        System.out.println(bands.searchByName(name));
     }
     
     private static void searchSetTime() {
