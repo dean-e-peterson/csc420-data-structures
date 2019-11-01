@@ -40,6 +40,10 @@ class BandList {
         MergeSort.sort(innerList);
     }
     
+    public void sortBySetTime() {
+        InsertionSort.sort(innerList);
+    }
+    
     public Band searchByName(String name) {
         return BinarySearch.search(innerList, name);
     }

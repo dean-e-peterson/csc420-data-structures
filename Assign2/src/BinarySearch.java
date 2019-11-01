@@ -1,5 +1,5 @@
 /*
- * MergeSort.java
+ * BinarySearch.java
  * Concordia CSC420 - Data Structures
  * Assignment 2 - Band Coordinator - Binary search utility class
  * Binary search for a list of bands.

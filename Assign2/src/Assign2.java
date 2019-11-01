@@ -29,6 +29,9 @@ public class Assign2 {
         bands.sortByName();
         System.out.println();
         System.out.println(bands);
+        bands.sortBySetTime();
+        System.out.println();
+        System.out.println(bands);
         
         while (true) {
             System.out.println("\nSearch by Band Name (1) or Set List (2): ");

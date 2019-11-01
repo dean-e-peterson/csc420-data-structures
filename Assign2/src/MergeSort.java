@@ -36,6 +36,7 @@ public class MergeSort {
     
     // Recursive helper sorting elements from (inclusive) to to (exclusive).
     private static void sort(int from, int to) {
+        // ### Check if this handles empty list, and maybe list of length 1.
         // System.out.println("sort from " + from + " to " + to); 
         
         if (from >= to - 1) {
